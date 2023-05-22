@@ -172,7 +172,7 @@ COMMENT ON COLUMN lojas.lojas.longitude IS 'longitude das lojas';
 COMMENT ON COLUMN lojas.lojas.logo IS 'logo das lojas';
 COMMENT ON COLUMN lojas.lojas.logo_mime_type IS 'logos em MIME';
 COMMENT ON COLUMN lojas.lojas.logo_arquivo IS 'arquivo das logos';
-COMMENT ON COLUMN lojas.lojas.charset IS 'charset das logos';
+COMMENT ON COLUMN lojas.lojas.logo_charset IS 'charset das logos';
 COMMENT ON COLUMN lojas.lojas.logo_ultima_atualizacao IS 'última atualização das imagens';
 
 -- Comenta a tabela envios e suas colunas
