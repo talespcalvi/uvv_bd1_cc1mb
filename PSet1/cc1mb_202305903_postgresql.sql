@@ -181,7 +181,31 @@ COMMENT ON COLUMN lojas.envios.envio_id IS 'id de envio';
 COMMENT ON COLUMN lojas.envios.loja_id IS 'id da loja';
 COMMENT ON COLUMN lojas.envios.cliente_id IS 'id do cliente';
 COMMENT ON COLUMN lojas.envios.endereco_entrega IS 'endereço de envio';
-COMMENT ON COLUMN lojas.envios.status IS 'status do envio'; 
+COMMENT ON COLUMN lojas.envios.status IS 'status do envio';
+
+-- Comenta a tabela estoques e suas colunas
+COMMENT ON TABLE lojas.estoques IS 'Tabela referente aos estoques';
+COMMENT ON COLUMN lojas.estoques.estoque_id IS 'id do estoque';
+COMMENT ON COLUMN lojas.estoques.loja_id IS 'id da loja';
+COMMENT ON COLUMN lojas.estoques.produto_id IS 'id do produto';
+COMMENT ON COLUMN lojas.estoques.quantidade IS 'quantidade dentro dos estoques';
+
+-- Comenta a tabela pedidos
+COMMENT ON TABLE lojas.pedidos IS 'Tabela referente aos pedidos';
+COMMENT ON COLUMN lojas.pedidos.pedido_id IS 'id do pedido';
+COMMENT ON COLUMN lojas.pedidos.data_hora IS 'data e hora do pedido';
+COMMENT ON COLUMN lojas.pedidos.cliente_id IS 'id do cliente';
+COMMENT ON COLUMN lojas.pedidos.status IS 'status do pedido';
+COMMENT ON COLUMN lojas.pedidos.loja_id IS 'id da loja';
+
+-- Comenta a tabela pedidos_itens
+COMMENT ON TABLE lojas.pedidos_itens IS 'Tabela referente aos itens pedidos';
+COMMENT ON COLUMN lojas.pedidos_itens.pedido_id IS 'id do pedido';
+COMMENT ON COLUMN lojas.pedidos_itens.produto_id IS 'id do produto pedido';
+COMMENT ON COLUMN lojas.pedidos_itens.numero_da_linha IS 'número da linha do pedido';
+COMMENT ON COLUMN lojas.pedidos_itens.preco_unitario IS 'preço unitário do produto pedido';
+COMMENT ON COLUMN lojas.pedidos_itens.quantidade IS 'quantidade do produto pedido';
+COMMENT ON COLUMN lojas.pedidos_itens.envio_id IS 'id do envio';
 
 -- Cria as relações entre as tabelas
 ALTER TABLE lojas.pedidos ADD CONSTRAINT clientes_pedidos_fk
