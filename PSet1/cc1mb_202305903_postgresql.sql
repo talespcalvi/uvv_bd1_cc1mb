@@ -1,9 +1,6 @@
 -- Tales Paiva Calvi
 -- CC1Mb
 
--- Apaga o usuário já existente
-DROP USER IF EXISTS tales;
-
 -- Apaga o schema já existente
 DROP SCHEMA IF EXISTS lojas
 CASCADE;
@@ -21,25 +18,29 @@ DROP TABLE IF EXISTS clientes,
                      envios
 CASCADE;
 
+-- Apaga o usuário já existente
+DROP USER IF EXISTS "tales";
+
 -- Cria o Usuário
-CREATE USER tales WITH
+CREATE USER "tales" WITH
 SUPERUSER
 CREATEDB
 CREATEROLE
-ENCRYPTED PASSWORD 'computacao@raiz';
+PASSWORD 'computacao@raiz';
 
 -- Troca a conexão
 
 -- Cria o schema
 CREATE SCHEMA lojas
-AUTHORIZATION tales;
+AUTHORIZATION "tales";
 
 -- Ajusta o schema de usuário
-ALTER USER tales
+ALTER USER "tales"
 SET SEARCH_PATH TO lojas, "$tales", public;
 
 -- Cria o Banco de dados
 CREATE DATABASE uvv WITH
+OWNER = "tales"
 TEMPLATE = template0
 ENCODING = 'UTF8'
 LC_COLLATE = 'pt_BR.UTF-8'
