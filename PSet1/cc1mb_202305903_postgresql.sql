@@ -30,14 +30,6 @@ PASSWORD 'computacao@raiz';
 
 -- Troca a conexão
 
--- Cria o schema
-CREATE SCHEMA lojas
-AUTHORIZATION "tales";
-
--- Ajusta o schema de usuário
-ALTER USER "tales"
-SET SEARCH_PATH TO lojas, "$tales", public;
-
 -- Cria o Banco de dados
 CREATE DATABASE uvv WITH
 OWNER = "tales"
@@ -49,6 +41,14 @@ ALLOW_CONNECTIONS = TRUE;
 
 -- Conecta ao banco de dados
 \c uvv;
+
+-- Cria o schema
+CREATE SCHEMA lojas
+AUTHORIZATION "tales";
+
+-- Ajusta o schema de usuário
+ALTER USER "tales"
+SET SEARCH_PATH TO lojas, "$tales", public;
 
 -- Cria a tabela clientes
 CREATE TABLE lojas.clientes (
