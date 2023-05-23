@@ -31,11 +31,12 @@ ENCRYPTED PASSWORD 'computacao@raiz';
 -- Troca a conexão
 
 -- Cria o schema
-CREATE SCHEMA lojas AUTHORIZATION tales;
+CREATE SCHEMA lojas
+AUTHORIZATION tales;
 
 -- Ajusta o schema de usuário
 ALTER USER tales
-SET SEARCH_PATH TO lojas, "$user", public;
+SET SEARCH_PATH TO lojas, "$tales", public;
 
 -- Cria o Banco de dados
 CREATE DATABASE uvv WITH
@@ -44,6 +45,9 @@ ENCODING = 'UTF8'
 LC_COLLATE = 'pt_BR.UTF-8'
 LC_CTYPE = 'pt_BR.UTF-8'
 ALLOW_CONNECTIONS = TRUE;
+
+-- Conecta ao banco de dados
+\c uvv;
 
 -- Cria a tabela clientes
 CREATE TABLE lojas.clientes (
