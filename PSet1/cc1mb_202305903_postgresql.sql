@@ -42,7 +42,7 @@ ALLOW_CONNECTIONS = TRUE
 CONNECTION LIMIT = -1;
 
 -- Conecta ao banco de dados
-\c uvv;
+\c uvv tales;
 
 -- Cria o schema
 CREATE SCHEMA lojas
@@ -53,7 +53,7 @@ ALTER USER "tales"
 SET SEARCH_PATH TO lojas, "$tales", public;
 
 -- Cria a tabela clientes
-CREATE TABLE public.clientes (
+CREATE TABLE clientes (
                 cliente_id NUMERIC(38)   NOT NULL,
                 email      VARCHAR(255)  NOT NULL,
                 nome       VARCHAR(255)  NOT NULL,
@@ -66,16 +66,16 @@ CREATE TABLE public.clientes (
 );
 
 -- Comenta a tabela clientes e suas colunas
-COMMENT ON TABLE  public.clientes            IS 'Tabela referente às lojas';
-COMMENT ON COLUMN public.clientes.cliente_id IS 'id do cliente';
-COMMENT ON COLUMN public.clientes.email      IS 'email dos clientes';
-COMMENT ON COLUMN public.clientes.nome       IS 'nome dos clientes';
-COMMENT ON COLUMN public.clientes.telefone1  IS 'número de telefone dos clientes';
-COMMENT ON COLUMN public.clientes.telefone2  IS 'número de telefone dos clientes';
-COMMENT ON COLUMN public.clientes.telefone3  IS 'número de telefone dos clientes';
+COMMENT ON TABLE  clientes            IS 'Tabela referente às lojas';
+COMMENT ON COLUMN clientes.cliente_id IS 'id do cliente';
+COMMENT ON COLUMN clientes.email      IS 'email dos clientes';
+COMMENT ON COLUMN clientes.nome       IS 'nome dos clientes';
+COMMENT ON COLUMN clientes.telefone1  IS 'número de telefone dos clientes';
+COMMENT ON COLUMN clientes.telefone2  IS 'número de telefone dos clientes';
+COMMENT ON COLUMN clientes.telefone3  IS 'número de telefone dos clientes';
 
 -- Cria a tabela produtos
-CREATE TABLE public.produtos (
+CREATE TABLE produtos (
                 produto_id                NUMERIC(38)  NOT NULL,
                 nome                      VARCHAR(255) NOT NULL,
                 preco_unitario            NUMERIC(10,2),
@@ -91,19 +91,19 @@ CREATE TABLE public.produtos (
 );
 
 -- Comenta a tabela produtos e suas colunas
-COMMENT ON TABLE  public.produtos                    IS 'Tabela referente aos produtos';     
-COMMENT ON COLUMN public.produtos.produto_id         IS 'id dos produtos';
-COMMENT ON COLUMN public.produtos.nome               IS 'nome dos produtos';
-COMMENT ON COLUMN public.produtos.preco_unitario     IS 'preço unitário dos produtos';
-COMMENT ON COLUMN public.produtos.detalhes           IS 'detalhes dos produtos';
-COMMENT ON COLUMN public.produtos.imagem             IS 'imagem dos produtos';
-COMMENT ON COLUMN public.produtos.imagem_mime_type   IS 'imagens em MIME';
-COMMENT ON COLUMN public.produtos.imagem_arquivo     IS 'arquivo das imagens';
-COMMENT ON COLUMN public.produtos.imagem_charset            IS 'charset das imagens';
-COMMENT ON COLUMN public.produtos.imagem_ultima_atualizacao IS 'última atualização das imagens';
+COMMENT ON TABLE  produtos                    IS 'Tabela referente aos produtos';     
+COMMENT ON COLUMN produtos.produto_id         IS 'id dos produtos';
+COMMENT ON COLUMN produtos.nome               IS 'nome dos produtos';
+COMMENT ON COLUMN produtos.preco_unitario     IS 'preço unitário dos produtos';
+COMMENT ON COLUMN produtos.detalhes           IS 'detalhes dos produtos';
+COMMENT ON COLUMN produtos.imagem             IS 'imagem dos produtos';
+COMMENT ON COLUMN produtos.imagem_mime_type   IS 'imagens em MIME';
+COMMENT ON COLUMN produtos.imagem_arquivo     IS 'arquivo das imagens';
+COMMENT ON COLUMN produtos.imagem_charset            IS 'charset das imagens';
+COMMENT ON COLUMN produtos.imagem_ultima_atualizacao IS 'última atualização das imagens';
 
 -- Cria a tabela lojas
-CREATE TABLE public.lojas (
+CREATE TABLE lojas (
                 loja_id                 NUMERIC(38)  NOT NULL,
                 nome                    VARCHAR(255) NOT NULL,
                 endereco_web            VARCHAR(100),
@@ -121,21 +121,21 @@ CREATE TABLE public.lojas (
 );
 
 -- Comenta a tabela lojas e suas colunas
-COMMENT ON TABLE  public.lojas                          IS 'Tabela referentes às lojas';
-COMMENT ON COLUMN public.lojas.loja_id                  IS 'id das lojas';
-COMMENT ON COLUMN public.lojas.nome                     IS 'nome das lojas';
-COMMENT ON COLUMN public.lojas.endereco_web             IS 'endereço web das lojas';
-COMMENT ON COLUMN public.lojas.endereco_fisico          IS 'endereço físico das lojas';
-COMMENT ON COLUMN public.lojas.latitude                 IS 'latitude das lojas';
-COMMENT ON COLUMN public.lojas.longitude                IS 'longitude das lojas';
-COMMENT ON COLUMN public.lojas.logo                     IS 'logo das lojas';
-COMMENT ON COLUMN public.lojas.logo_mime_type           IS 'logos em MIME';
-COMMENT ON COLUMN public.lojas.logo_arquivo             IS 'arquivo das logos';
-COMMENT ON COLUMN public.lojas.logo_charset             IS 'charset das logos';
-COMMENT ON COLUMN public.lojas.logo_ultima_atualizacao  IS 'última atualização das imagens';
+COMMENT ON TABLE  lojas                          IS 'Tabela referentes às lojas';
+COMMENT ON COLUMN lojas.loja_id                  IS 'id das lojas';
+COMMENT ON COLUMN lojas.nome                     IS 'nome das lojas';
+COMMENT ON COLUMN lojas.endereco_web             IS 'endereço web das lojas';
+COMMENT ON COLUMN lojas.endereco_fisico          IS 'endereço físico das lojas';
+COMMENT ON COLUMN lojas.latitude                 IS 'latitude das lojas';
+COMMENT ON COLUMN lojas.longitude                IS 'longitude das lojas';
+COMMENT ON COLUMN lojas.logo                     IS 'logo das lojas';
+COMMENT ON COLUMN lojas.logo_mime_type           IS 'logos em MIME';
+COMMENT ON COLUMN lojas.logo_arquivo             IS 'arquivo das logos';
+COMMENT ON COLUMN lojas.logo_charset             IS 'charset das logos';
+COMMENT ON COLUMN lojas.logo_ultima_atualizacao  IS 'última atualização das imagens';
 
 -- Cria a tabela envios
-CREATE TABLE public.envios (
+CREATE TABLE envios (
                 envio_id         NUMERIC(38)  NOT NULL,
                 cliente_id       NUMERIC(38)  NOT NULL,
                 loja_id          NUMERIC(38)  NOT NULL,
@@ -147,15 +147,15 @@ CREATE TABLE public.envios (
 );
 
 -- Comenta a tabela envios e suas colunas
-COMMENT ON TABLE  public.envios                   IS 'Tabela referente aos envios';
-COMMENT ON COLUMN public.envios.envio_id          IS 'id de envio';
-COMMENT ON COLUMN public.envios.loja_id           IS 'id da loja';
-COMMENT ON COLUMN public.envios.cliente_id        IS 'id do cliente';
-COMMENT ON COLUMN public.envios.endereco_entrega  IS 'endereço de envio';
-COMMENT ON COLUMN public.envios.status            IS 'status do envio';
+COMMENT ON TABLE  envios                   IS 'Tabela referente aos envios';
+COMMENT ON COLUMN envios.envio_id          IS 'id de envio';
+COMMENT ON COLUMN envios.loja_id           IS 'id da loja';
+COMMENT ON COLUMN envios.cliente_id        IS 'id do cliente';
+COMMENT ON COLUMN envios.endereco_entrega  IS 'endereço de envio';
+COMMENT ON COLUMN envios.status            IS 'status do envio';
 
 -- Cria a tabela estoques
-CREATE TABLE public.estoques (
+CREATE TABLE estoques (
                 estoque_id NUMERIC(38) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
                 produto_id NUMERIC(38) NOT NULL,
@@ -166,11 +166,11 @@ CREATE TABLE public.estoques (
 );
 
 -- Comenta a tabela estoques e suas colunas
-COMMENT ON TABLE  public.estoques             IS 'Tabela referente aos estoques';
-COMMENT ON COLUMN public.estoques.estoque_id  IS 'id do estoque';
-COMMENT ON COLUMN public.estoques.loja_id     IS 'id da loja';
-COMMENT ON COLUMN public.estoques.produto_id  IS 'id do produto';
-COMMENT ON COLUMN public.estoques.quantidade  IS 'quantidade dentro dos estoques';
+COMMENT ON TABLE  estoques             IS 'Tabela referente aos estoques';
+COMMENT ON COLUMN estoques.estoque_id  IS 'id do estoque';
+COMMENT ON COLUMN estoques.loja_id     IS 'id da loja';
+COMMENT ON COLUMN estoques.produto_id  IS 'id do produto';
+COMMENT ON COLUMN estoques.quantidade  IS 'quantidade dentro dos estoques';
 
 -- Cria a tabela pedidos
 CREATE TABLE public.pedidos (
@@ -193,7 +193,7 @@ COMMENT ON COLUMN public.pedidos.status      IS 'status do pedido';
 COMMENT ON COLUMN public.pedidos.loja_id     IS 'id da loja';
 
 -- Cria a tabela pedidos_itens
-CREATE TABLE public.pedidos_itens (
+CREATE TABLE pedidos_itens (
                 pedido_id       NUMERIC(38)   NOT NULL,
                 produto_id      NUMERIC(38)   NOT NULL,
                 numero_da_linha NUMERIC(38)   NOT NULL,
@@ -206,32 +206,32 @@ CREATE TABLE public.pedidos_itens (
 );
 
 -- Comenta a tabela pedidos_itens
-COMMENT ON TABLE  public.pedidos_itens                   IS 'Tabela referente aos itens pedidos';
-COMMENT ON COLUMN public.pedidos_itens.pedido_id         IS 'id do pedido';
-COMMENT ON COLUMN public.pedidos_itens.produto_id        IS 'id do produto pedido';
-COMMENT ON COLUMN public.pedidos_itens.numero_da_linha   IS 'número da linha do pedido';
-COMMENT ON COLUMN public.pedidos_itens.preco_unitario    IS 'preço unitário do produto pedido';
-COMMENT ON COLUMN public.pedidos_itens.quantidade        IS 'quantidade do produto pedido';
-COMMENT ON COLUMN public.pedidos_itens.envio_id          IS 'id do envio';
+COMMENT ON TABLE  pedidos_itens                   IS 'Tabela referente aos itens pedidos';
+COMMENT ON COLUMN pedidos_itens.pedido_id         IS 'id do pedido';
+COMMENT ON COLUMN pedidos_itens.produto_id        IS 'id do produto pedido';
+COMMENT ON COLUMN pedidos_itens.numero_da_linha   IS 'número da linha do pedido';
+COMMENT ON COLUMN pedidos_itens.preco_unitario    IS 'preço unitário do produto pedido';
+COMMENT ON COLUMN pedidos_itens.quantidade        IS 'quantidade do produto pedido';
+COMMENT ON COLUMN pedidos_itens.envio_id          IS 'id do envio';
 
 -- Cria as relações entre as tabelas
-ALTER TABLE public.pedidos ADD CONSTRAINT clientes_pedidos_fk
+ALTER TABLE pedidos ADD CONSTRAINT clientes_pedidos_fk
 FOREIGN KEY (cliente_id)
-REFERENCES  public.clientes (cliente_id)
+REFERENCES  clientes (cliente_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.envios ADD CONSTRAINT clientes_envios_fk
+ALTER TABLE envios ADD CONSTRAINT clientes_envios_fk
 FOREIGN KEY (cliente_id)
-REFERENCES  public.clientes (cliente_id)
+REFERENCES  clientes (cliente_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.pedidos_itens ADD CONSTRAINT produtos_pedidos_itens_fk
+ALTER TABLE pedidos_itens ADD CONSTRAINT produtos_pedidos_itens_fk
 FOREIGN KEY (produto_id)
-REFERENCES  public.produtos (produto_id)
+REFERENCES  produtos (produto_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
@@ -243,16 +243,16 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.pedidos ADD CONSTRAINT lojas_pedidos_fk
+ALTER TABLE pedidos ADD CONSTRAINT lojas_pedidos_fk
 FOREIGN KEY (loja_id)
-REFERENCES  public.lojas (loja_id)
+REFERENCES  lojas (loja_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.estoques ADD CONSTRAINT lojas_estoques_fk
+ALTER TABLE estoques ADD CONSTRAINT lojas_estoques_fk
 FOREIGN KEY (loja_id)
-REFERENCES  public.lojas (loja_id)
+REFERENCES  lojas (loja_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
@@ -264,16 +264,16 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.pedidos_itens ADD CONSTRAINT envios_pedidos_itens_fk
+ALTER TABLE pedidos_itens ADD CONSTRAINT envios_pedidos_itens_fk
 FOREIGN KEY (envio_id)
-REFERENCES  public.envios (envio_id)
+REFERENCES  envios (envio_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.pedidos_itens ADD CONSTRAINT pedidos_pedidos_itens_fk
+ALTER TABLE pedidos_itens ADD CONSTRAINT pedidos_pedidos_itens_fk
 FOREIGN KEY (pedido_id)
-REFERENCES  public.pedidos (pedido_id)
+REFERENCES  pedidos (pedido_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
