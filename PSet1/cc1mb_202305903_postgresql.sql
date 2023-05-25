@@ -29,8 +29,6 @@ CREATEDB
 CREATEROLE
 PASSWORD '123';
 
--- Troca a conexão
-
 -- Cria o Banco de dados
 CREATE DATABASE uvv WITH
 OWNER = "tales"
@@ -41,7 +39,7 @@ LC_CTYPE = 'pt_BR.UTF-8'
 ALLOW_CONNECTIONS = TRUE
 CONNECTION LIMIT = -1;
 
--- Conecta ao banco de dados
+-- Troca a conexão
 \c uvv tales;
 
 -- Cria o schema
