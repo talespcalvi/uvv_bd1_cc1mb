@@ -1,22 +1,8 @@
 -- Tales Paiva Calvi
 -- CC1Mb
 
--- Apaga o schema já existente
-DROP SCHEMA IF EXISTS lojas
-CASCADE;
-
 -- Apaga o Banco de dados já existente
 DROP DATABASE IF EXISTS uvv;
-
--- Apaga tabelas já existentes
-DROP TABLE IF EXISTS clientes,
-                     produtos,
-                     estoques,
-                     pedidos,
-                     pedidos_itens,
-                     lojas,
-                     envios
-CASCADE;
 
 -- Apaga o usuário já existente
 DROP USER IF EXISTS "tales";
