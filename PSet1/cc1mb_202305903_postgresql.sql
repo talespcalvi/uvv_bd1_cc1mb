@@ -74,6 +74,7 @@ CREATE TABLE lojas.produtos (
   CONSTRAINT pk_produtos PRIMARY KEY (produto_id)
 );
 
+-- Adciona uma restrição à coluna preco_unitario
 ALTER TABLE lojas.produtos
 ADD CONSTRAINT cc_lojas_produtos_preco_unitario
 CHECK (preco_unitario > 0);
@@ -134,6 +135,7 @@ CREATE TABLE lojas.envios (
   CONSTRAINT pk_envios PRIMARY KEY (envio_id)
 );
 
+-- Adciona uma restrição à coluna status
 ALTER TABLE lojas.envios
 ADD CONSTRAINT cc_lojas_envios_status
 CHECK (status IN('criado', 'enviado', 'transito', 'entregue'));
@@ -157,6 +159,7 @@ CREATE TABLE lojas.estoques (
   CONSTRAINT pk_estoques PRIMARY KEY (estoque_id)
 );
 
+-- Adciona uma restrição à coluna quantidade
 ALTER TABLE lojas.estoques
 ADD CONSTRAINT cc_lojas_estoques_quantidade
 CHECK (quantidade > 0);
@@ -180,6 +183,7 @@ CREATE TABLE lojas.pedidos (
   CONSTRAINT pk_pedidos PRIMARY KEY (pedido_id)
 );
 
+-- Adciona uma restrição à coluna status
 ALTER TABLE lojas.pedidos
 ADD CONSTRAINT cc_lojas_pedidos_status
 CHECK (status IN('cancelado', 'completo', 'aberto', 'pago', 'reembolsado', 'enviado'));
@@ -205,6 +209,7 @@ CREATE TABLE lojas.pedidos_itens (
   CONSTRAINT pk_pedidos_itens PRIMARY KEY (pedido_id, produto_id)
 );
 
+-- Adciona uma restrição à coluna quantidade
 ALTER TABLE lojas.pedidos_itens
 ADD CONSTRAINT cc_lojas_pedidos_itens_quantidade
 CHECK (quantidade > 0);
