@@ -26,7 +26,7 @@ ALLOW_CONNECTIONS = TRUE
 CONNECTION LIMIT = -1;
 
 -- Troca a conexão
-\c uvv tales;
+\c 'dbname= uvv user=tales password=123';
 
 -- Cria o schema
 CREATE SCHEMA lojas
@@ -73,6 +73,10 @@ CREATE TABLE lojas.produtos (
 -- Cria a primary key
   CONSTRAINT pk_produtos PRIMARY KEY (produto_id)
 );
+
+ALTER TABLE lojas.produtos
+ADD CONSTRAINT cc_lojas_produtos_preco_unitario
+CHECK (preco_unitario > 0);
 
 -- Comenta a tabela produtos e suas colunas
 COMMENT ON TABLE  lojas.produtos                    IS 'Tabela referente aos produtos';     
@@ -130,6 +134,10 @@ CREATE TABLE lojas.envios (
   CONSTRAINT pk_envios PRIMARY KEY (envio_id)
 );
 
+ALTER TABLE lojas.envios
+ADD CONSTRAINT cc_lojas_envios_status
+CHECK (status IN('criado', 'enviado', 'transito', 'entregue'));
+
 -- Comenta a tabela envios e suas colunas
 COMMENT ON TABLE  lojas.envios                   IS 'Tabela referente aos envios';
 COMMENT ON COLUMN lojas.envios.envio_id          IS 'id de envio';
@@ -149,6 +157,10 @@ CREATE TABLE lojas.estoques (
   CONSTRAINT pk_estoques PRIMARY KEY (estoque_id)
 );
 
+ALTER TABLE lojas.estoques
+ADD CONSTRAINT cc_lojas_estoques_quantidade
+CHECK (quantidade > 0);
+
 -- Comenta a tabela estoques e suas colunas
 COMMENT ON TABLE  lojas.estoques             IS 'Tabela referente aos estoques';
 COMMENT ON COLUMN lojas.estoques.estoque_id  IS 'id do estoque';
@@ -167,6 +179,10 @@ CREATE TABLE lojas.pedidos (
 -- Cria a primary key
   CONSTRAINT pk_pedidos PRIMARY KEY (pedido_id)
 );
+
+ALTER TABLE lojas.pedidos
+ADD CONSTRAINT cc_lojas_pedidos_status
+CHECK (status IN('cancelado', 'completo', 'aberto', 'pago', 'reembolsado', 'enviado'));
 
 -- Comenta a tabela pedidos
 COMMENT ON TABLE  lojas.pedidos             IS 'Tabela referente aos pedidos';
@@ -188,6 +204,10 @@ CREATE TABLE lojas.pedidos_itens (
 -- Cria a primary key
   CONSTRAINT pk_pedidos_itens PRIMARY KEY (pedido_id, produto_id)
 );
+
+ALTER TABLE lojas.pedidos_itens
+ADD CONSTRAINT cc_lojas_pedidos_itens_quantidade
+CHECK (quantidade > 0);
 
 -- Comenta a tabela pedidos_itens
 COMMENT ON TABLE  lojas.pedidos_itens                   IS 'Tabela referente aos itens pedidos';
