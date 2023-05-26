@@ -203,7 +203,7 @@ CREATE TABLE lojas.pedidos_itens (
                 numero_da_linha NUMERIC(38)   NOT NULL,
                 preco_unitario  NUMERIC(10,2) NOT NULL,
                 quantidade      NUMERIC(38)   NOT NULL,
-                envio_id        NUMERIC(38)   NOT NULL,
+                envio_id        NUMERIC(38),
 
 -- Cria a primary key
   CONSTRAINT pk_pedidos_itens PRIMARY KEY (pedido_id, produto_id)
