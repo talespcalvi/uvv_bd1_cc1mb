@@ -15,4 +15,4 @@
 ### Esse diagrama foi implementado utilizando o SQL Power Architech, ficando dessa forma.
 ![alt](https://github.com/talespcalvi/uvv_bd1_cc1mb/blob/main/PSet1/diagramauvv.png)
 
-### A partir desse diagrama foi feito o banco de dados uvv, no qual o código está fornecido no repositório cc1mb_202305903_postgresql.sql nesse mesmo diretório. Nesse código foi implementado as relações entres as tabelas, os comentários de cada tabela e coluna e algumas restrições de checagem.
+### A partir desse diagrama foi feito o banco de dados uvv, no qual o código está fornecido no repositório cc1mb_202305903_postgresql.sql nesse mesmo diretório. Nesse código foi implementado as relações entres as tabelas, os comentários de cada tabela e coluna, criado usuário e schema e também algumas restrições de checagem.
